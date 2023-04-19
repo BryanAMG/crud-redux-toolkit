@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, type Middleware } from "@reduxjs/toolkit";
 import userReducer from "./users/slice";
 
 // creando un middleware para el localstorage
-const persistentMiddleware = (store) => (next) => (action) => {
+const persistentMiddleware: Middleware = (store) => (next) => (action) => {
 	next(action);
 	localStorage.setItem("__redux_state__", JSON.stringify(store.getState()));
 };
